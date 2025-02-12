@@ -1,3 +1,5 @@
+var gameResultText = "";
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -152,6 +154,7 @@ function playGame(rounds) {
     }
 }
 
+
 const rounds = parseInt(prompt("Ile rund gramy :"));
 playGame(rounds);
 
@@ -160,3 +163,8 @@ const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 playRound(humanSelection, computerSelection);
 */
+
+
+
+
+document.getElementById("game").innerHTML = gameResultText;

@@ -1,0 +1,58 @@
+body{
+    background-color: #cacaca;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+
+    width: 80%;
+    height: 100%;
+}
+
+/* this selector selects all divs inside of .flex-container */
+.flex-container div {   
+    border-width: 4px;
+    border-color:  #222222;
+    border-style: none dashed solid dashed;
+
+    width: 100%;
+    margin: 10px auto 10px auto; 
+
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    line-height: 2em;
+
+    justify-content: center;
+    align-content: center;
+
+  /* flex: 0 0 auto;
+    flex-grow
+    flex-shrink
+    flex-basis
+  */
+}
+
+h1 {
+    color: #222222;
+    font-size: 3em;
+}
+        
+p {
+    color: #444444;
+    font-weight:normal;
+}
+
+.bold {
+    font-weight:bold;
+}
