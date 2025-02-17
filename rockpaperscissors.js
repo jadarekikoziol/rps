@@ -10,19 +10,19 @@ function getComputerChoice() {
     let x = getRandomInt(3);
 
     if (x == 0) {
-        console.log("  Komputer gra: Kamien");
+        gameResultText += "  Komputer gra: Kamien\n";
         return "K";
     }
     else if (x == 1) {
-        console.log("  Komputer gra: Papier");
+        gameResultText += "  Komputer gra: Papier\n";
         return "P";
     }
     else if (x == 2){
-        console.log("  Komputer gra: Nozyczki");
+        gameResultText += "  Komputer gra: Nozyczki\n";
         return "N";
     }
     else {
-        console.log("!!! Blad kodu getComputerChoice");
+        gameResultText += "!!! Blad kodu getComputerChoice\n";
         return "!!!";
     }
 }
@@ -32,19 +32,19 @@ function getHumanChoice() {
 
     answear = answear.toLowerCase();
     if (answear == "kamien") {
-        console.log("  Gracz gra: Kamien");
+        gameResultText += "  Gracz gra: Kamien\n";
         return "K";
     }
     else if (answear == "papier") {
-        console.log("  Gracz gra: Papier");
+        gameResultText += "  Gracz gra: Papier\n";
         return "P";
     }
     else if (answear == "nozyczki") {
-        console.log("  Gracz gra: Nozyczki");
+        gameResultText += "  Gracz gra: Nozyczki\n";
         return "N";
     }
     else {
-        console.log("!!! Blad kodu getHumanChoice");
+        gameResultText += "!!! Blad kodu getHumanChoice\n";
         return "!!!";
     }
 }
@@ -52,61 +52,51 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice) {
 
     if(humanChoice =="!!!" || computerChoice =="!!!") {
-        console.log("Blad rundy");
-        console.log("\n");
+        gameResultText += "Blad rundy\n\n";
         return "!!!"
     }
 
     if (humanChoice == "K") {
         if (computerChoice == "K") {
-            console.log("    Kamien i Kamien - Remis");
-            console.log("\n");
+            gameResultText += "    Kamien i Kamien - Remis\n\n";
             return 0;
         }
         else if (computerChoice == "P") {
-            console.log("    Kamien i Papier - Przegrywasz");
-            console.log("\n");
+            gameResultText += "    Kamien i Papier - Przegrywasz\n\n";
             return -1;
         }
         else if (computerChoice == "N") {
-            console.log("    Kamien i Nozyczki - Wygrywasz");
-            console.log("\n");
+            gameResultText += "    Kamien i Nozyczki - Wygrywasz\n\n";
             return 1;
         }
     }
 
     if (humanChoice == "P") {
         if (computerChoice == "K") {
-            console.log("    Papier i Kamien - Wygrywasz");
-            console.log("\n");
+            gameResultText += "    Papier i Kamien - Wygrywasz\n\n";
             return 1;
         }
         else if (computerChoice == "P") {
-            console.log("    Papier i Papier - Remis");
-            console.log("\n");
+            gameResultText += "    Papier i Papier - Remis\n\n";
             return 0;
         }
         else if (computerChoice == "N") {
-            console.log("    Papier i Nozyczki - Przegrywasz");
-            console.log("\n");
+            gameResultText += "    Papier i Nozyczki - Przegrywasz\n\n";
             return -1;
         }
     }
 
     else if (humanChoice == "N") {
         if (computerChoice == "K") {
-            console.log("    Nozyczki i Kamien - Przegrywasz");
-            console.log("\n");
+            gameResultText += "    Nozyczki i Kamien - Przegrywasz\n\n";
             return -1;
         }
         else if (computerChoice == "P") {
-            console.log("    Nozyczki i Papier - Wygrywasz");
-            console.log("\n");
+            gameResultText += "    Nozyczki i Papier - Wygrywasz\n\n";
             return 1;
         }
         else if (computerChoice == "N") {
-            console.log("    Nozyczki i Nozyczki - Remis");
-            console.log("\n");
+            gameResultText += "    Nozyczki i Nozyczki - Remis\n\n";
             return 0;
         }
     }
@@ -117,43 +107,44 @@ function playRound(humanChoice, computerChoice) {
 function playGame(rounds) {
 
     if (!Number.isInteger(rounds)) {
-        console.log("!!! !!! !!!");
-        console.log("!!! Podana liczba rund nie jest wartoscia liczbowa");
-        console.log("!!! Opuszczam gre");
-        console.log("!!! !!! !!!");
+        gameResultText += "!!! !!! !!!\n";
+        gameResultText += "!!! Podana liczba rund nie jest wartoscia liczbowa\n";
+        gameResultText += "!!! Opuszczam gre\n";
+        gameResultText += "!!! !!! !!!\n";
         return;
     }
 
     let result = 0;
     for (let i=1; i <= rounds; i++) {
-        console.log("# Runda " + i);
+        gameResultText += "# Runda " + i + "\n";
         let roundResult = playRound(getHumanChoice(), getComputerChoice());
 
         if (roundResult == "!!!") {
-            console.log("!!! !!! !!!");
-            console.log("!!! Blad gry w rundzie " + i);
-            console.log("!!! Opuszczam runde " + i);
-            console.log("!!! Opuszczam gre");
-            console.log("!!! !!! !!!");
+            gameResultText += "!!! !!! !!!\n";
+            gameResultText += "!!! Blad gry w rundzie " + i + "\n";
+            gameResultText += "!!! Opuszczam runde " + i + "\n";
+            gameResultText += "!!! Opuszczam gre\n";
+            gameResultText += "!!! !!! !!!\n";
             break;
         }
         result += roundResult;
     }
 
     if (result > 0) {
-        console.log("################### #");
-        console.log("Wygrales z wynikiem " + result);
+        gameResultText += "################### #\n";
+        gameResultText += "Wygrales z wynikiem " + result + "\n";
     }
     if (result < 0) {
-        console.log("##################### ##");
-        console.log("Przegrales z wynikiem " + result);
+        gameResultText += "##################### ##\n";
+        gameResultText += "Przegrales z wynikiem " + result + "\n";
     }
     if (result = 0) {
-        console.log("##### #");
-        console.log("Remis " + result);
+        gameResultText += "##### #\n";
+        gameResultText += "Remis " + result + "\n";
     }
-}
 
+    document.getElementById("game").innerHTML = gameResultText;
+}
 
 const rounds = parseInt(prompt("Ile rund gramy :"));
 playGame(rounds);
@@ -163,8 +154,3 @@ const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 playRound(humanSelection, computerSelection);
 */
-
-
-
-
-document.getElementById("game").innerHTML = gameResultText;
